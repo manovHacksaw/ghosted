@@ -12,7 +12,7 @@ export default function RedirectPage() {
     router.push('/'); // Redirect after successful login
   };
 
-  const loginError = (error) => {
+  const loginError = (error:any) => {
     console.error('Login error:', error);
   };
 
