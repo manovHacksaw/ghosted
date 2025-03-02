@@ -60,9 +60,9 @@ export function EducationForm({ onSubmit }: EducationFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {educations.map((education, index) => (
-        <div key={index} className="rounded-lg border border-[#DDDDFB] p-4">
+        <div key={index} className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-medium text-[#141414]">Education #{index + 1}</h3>
+            <h3 className="text-lg font-medium text-white">Education #{index + 1}</h3>
             {educations.length > 1 && (
               <Button
                 type="button"
@@ -77,61 +77,65 @@ export function EducationForm({ onSubmit }: EducationFormProps) {
           </div>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor={`institution-${index}`}>Institution</Label>
+              <Label htmlFor={`institution-${index}`} className="text-white">Institution</Label>
               <Input
                 id={`institution-${index}`}
                 placeholder="University/College/School Name"
                 value={education.institution}
                 onChange={(e) => handleChange(index, "institution", e.target.value)}
                 required
+                className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor={`degree-${index}`}>Degree</Label>
+                <Label htmlFor={`degree-${index}`} className="text-white">Degree</Label>
                 <Select onValueChange={(value) => handleChange(index, "degree", value)} defaultValue={education.degree}>
-                  <SelectTrigger id={`degree-${index}`}>
+                  <SelectTrigger id={`degree-${index}`} className="bg-black/50 border-[#DDDDFB]/20 text-white">
                     <SelectValue placeholder="Select degree" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="high_school">High School</SelectItem>
-                    <SelectItem value="associate">Associate's Degree</SelectItem>
-                    <SelectItem value="bachelor">Bachelor's Degree</SelectItem>
-                    <SelectItem value="master">Master's Degree</SelectItem>
-                    <SelectItem value="doctorate">Doctorate</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                  <SelectContent className="bg-black/90 border-[#DDDDFB]/20">
+                    <SelectItem value="high_school" className="text-white">High School</SelectItem>
+                    <SelectItem value="associate" className="text-white">Associate's Degree</SelectItem>
+                    <SelectItem value="bachelor" className="text-white">Bachelor's Degree</SelectItem>
+                    <SelectItem value="master" className="text-white">Master's Degree</SelectItem>
+                    <SelectItem value="doctorate" className="text-white">Doctorate</SelectItem>
+                    <SelectItem value="other" className="text-white">Other</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor={`field-${index}`}>Field of Study</Label>
+                <Label htmlFor={`field-${index}`} className="text-white">Field of Study</Label>
                 <Input
                   id={`field-${index}`}
                   placeholder="e.g. Computer Science"
                   value={education.fieldOfStudy}
                   onChange={(e) => handleChange(index, "fieldOfStudy", e.target.value)}
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
                 />
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor={`start-year-${index}`}>Start Year</Label>
+                <Label htmlFor={`start-year-${index}`} className="text-white">Start Year</Label>
                 <Input
                   id={`start-year-${index}`}
                   placeholder="YYYY"
                   value={education.startYear}
                   onChange={(e) => handleChange(index, "startYear", e.target.value)}
                   required
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor={`end-year-${index}`}>End Year (or Expected)</Label>
+                <Label htmlFor={`end-year-${index}`} className="text-white">End Year (or Expected)</Label>
                 <Input
                   id={`end-year-${index}`}
                   placeholder="YYYY"
                   value={education.endYear}
                   onChange={(e) => handleChange(index, "endYear", e.target.value)}
                   required
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
                 />
               </div>
             </div>
@@ -143,12 +147,12 @@ export function EducationForm({ onSubmit }: EducationFormProps) {
         type="button"
         variant="outline"
         onClick={handleAddEducation}
-        className="w-full border-dashed border-[#DDDDFB] text-[#141414]"
+        className="w-full border-dashed border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10"
       >
         <Plus className="mr-2 h-4 w-4" /> Add Another Education
       </Button>
 
-      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
         Continue <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>

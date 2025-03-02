@@ -71,38 +71,39 @@ export function SkillsForm({ onSubmit }: SkillsFormProps) {
             value={skillInput}
             onChange={(e) => setSkillInput(e.target.value)}
             onKeyDown={handleKeyDown}
+            className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
           />
           <Button
             type="button"
             onClick={handleAddSkill}
-            className="shrink-0 bg-[#1418EB] text-white hover:bg-[#1418EB]/90"
+            className="shrink-0 bg-[#1418EB] text-white hover:bg-[#1418EB]/80"
           >
             <Plus className="h-4 w-4" />
           </Button>
         </div>
 
-        <div className="rounded-lg border border-[#DDDDFB] p-4">
-          <h3 className="mb-4 text-lg font-medium text-[#141414]">Your Skills</h3>
+        <div className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
+          <h3 className="mb-4 text-lg font-medium text-white">Your Skills</h3>
           {skills.length === 0 ? (
-            <p className="text-[#141414]/60">No skills added yet. Add some skills above.</p>
+            <p className="text-white/60">No skills added yet. Add some skills above.</p>
           ) : (
             <div className="space-y-4">
               {skills.map((skill, index) => (
-                <div key={index} className="rounded-lg border border-[#DDDDFB] p-3">
+                <div key={index} className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-3">
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Badge className="bg-[#00EDBE] text-[#141414] hover:bg-[#00EDBE]/90">{skill.name}</Badge>
+                      <Badge className="bg-[#00EDBE] text-black hover:bg-[#00EDBE]/90">{skill.name}</Badge>
                       <Button
                         type="button"
                         variant="ghost"
                         size="sm"
                         onClick={() => handleRemoveSkill(skill.name)}
-                        className="h-6 w-6 p-0 text-[#141414]/60 hover:text-[#141414]"
+                        className="h-6 w-6 p-0 text-white/60 hover:text-white"
                       >
                         <X className="h-3 w-3" />
                       </Button>
                     </div>
-                    <span className="text-sm text-[#141414]/60">
+                    <span className="text-sm text-white/60">
                       {skill.proficiency === 1
                         ? "Beginner"
                         : skill.proficiency === 2
@@ -115,7 +116,7 @@ export function SkillsForm({ onSubmit }: SkillsFormProps) {
                     </span>
                   </div>
                   <div className="px-2">
-                    <Label className="mb-2 text-xs text-[#141414]/60">Proficiency Level</Label>
+                    <Label className="mb-2 text-xs text-white/60">Proficiency Level</Label>
                     <Slider
                       value={[skill.proficiency]}
                       min={1}
@@ -124,7 +125,7 @@ export function SkillsForm({ onSubmit }: SkillsFormProps) {
                       onValueChange={(value) => handleProficiencyChange(index, value)}
                       className="py-2"
                     />
-                    <div className="flex justify-between text-xs text-[#141414]/60">
+                    <div className="flex justify-between text-xs text-white/60">
                       <span>Beginner</span>
                       <span>Master</span>
                     </div>
@@ -135,18 +136,18 @@ export function SkillsForm({ onSubmit }: SkillsFormProps) {
           )}
         </div>
 
-        <div className="rounded-lg border border-[#DDDDFB] p-4">
-          <h3 className="mb-4 text-lg font-medium text-[#141414]">Suggested Skills</h3>
+        <div className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
+          <h3 className="mb-4 text-lg font-medium text-white">Suggested Skills</h3>
           <div className="space-y-4">
             {skillCategories.map((category, categoryIndex) => (
               <div key={categoryIndex}>
-                <h4 className="mb-2 text-sm font-medium text-[#141414]">{category.name}</h4>
+                <h4 className="mb-2 text-sm font-medium text-white">{category.name}</h4>
                 <div className="flex flex-wrap gap-2">
                   {category.examples.map((example, exampleIndex) => (
                     <Badge
                       key={exampleIndex}
                       variant="outline"
-                      className="cursor-pointer border-[#DDDDFB] hover:bg-[#F5F5F5]"
+                      className="cursor-pointer border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10"
                       onClick={() => {
                         setSkillInput(example)
                       }}
@@ -161,7 +162,7 @@ export function SkillsForm({ onSubmit }: SkillsFormProps) {
         </div>
       </div>
 
-      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
         Continue <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>

@@ -113,12 +113,12 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg bg-[#1418EB]/5 p-4">
+      <div className="rounded-lg bg-[#1418EB]/10 p-4 border border-[#1418EB]/20">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-[#1418EB]"></div>
           <div>
-            <h3 className="text-lg font-medium text-[#141414]">AI Analysis Complete</h3>
-            <p className="text-sm text-[#141414]/70">
+            <h3 className="text-lg font-medium text-white">AI Analysis Complete</h3>
+            <p className="text-sm text-white/70">
               Based on your profile and assessment, we've generated personalized career recommendations.
             </p>
           </div>
@@ -126,56 +126,29 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
       </div>
 
       <Tabs defaultValue="careers" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="careers">Career Recommendations</TabsTrigger>
-          <TabsTrigger value="skills">Skill Development</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 bg-black/50">
+          <TabsTrigger value="careers" className="data-[state=active]:bg-[#1418EB] text-white">Career Recommendations</TabsTrigger>
+          <TabsTrigger value="skills" className="data-[state=active]:bg-[#1418EB] text-white">Skill Development</TabsTrigger>
         </TabsList>
-        <TabsContent value="careers" className="mt-4 space-y-4">
+        <TabsContent value="careers">
           {careerRecommendations.map((career, index) => (
-            <Card key={index} className="overflow-hidden border-[#DDDDFB]">
-              <CardHeader className="bg-[#F5F5F5] pb-2">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-xl text-[#141414]">{career.title}</CardTitle>
-                  <Badge className="bg-[#00EDBE] text-[#141414]">{career.match}% Match</Badge>
-                </div>
-                <CardDescription>{career.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <div className="space-y-4">
+            <Card key={index} className="overflow-hidden border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md mb-4">
+              <CardContent className="p-6">
+                <div className="space-y-6">
                   <div>
-                    <h4 className="mb-2 text-sm font-medium text-[#141414]">Skills You Have</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {career.skills.have.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="outline" className="border-[#1418EB] bg-[#1418EB]/5">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 text-sm font-medium text-[#141414]">Skills to Develop</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {career.skills.need.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="outline" className="border-[#DDDDFB]">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 text-sm font-medium text-[#141414]">Recommended Education</h4>
-                    <ul className="list-inside list-disc space-y-1 text-sm text-[#141414]/70">
+                    <h4 className="mb-2 text-sm font-medium text-white">Recommended Education</h4>
+                    <ul className="list-inside list-disc space-y-1 text-sm text-white/70">
                       {career.education.map((edu, eduIndex) => (
                         <li key={eduIndex}>{edu}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h4 className="mb-2 text-sm font-medium text-[#141414]">Job Outlook</h4>
-                    <p className="text-sm text-[#141414]/70">{career.outlook}</p>
+                    <h4 className="mb-2 text-sm font-medium text-white">Job Outlook</h4>
+                    <p className="text-sm text-white/70">{career.outlook}</p>
                   </div>
                   <div>
-                    <h4 className="mb-2 text-sm font-medium text-[#141414]">Learning Resources</h4>
+                    <h4 className="mb-2 text-sm font-medium text-white">Learning Resources</h4>
                     <ul className="space-y-1">
                       {career.resources.map((resource, resourceIndex) => (
                         <li key={resourceIndex}>
@@ -183,7 +156,7 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
                             href={resource.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center text-sm text-[#1418EB] hover:underline"
+                            className="flex items-center text-sm text-[#00EDBE] hover:text-[#00EDBE]/80"
                           >
                             {resource.name}
                             <ExternalLink className="ml-1 h-3 w-3" />
@@ -197,16 +170,16 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
             </Card>
           ))}
           <div className="flex justify-center">
-            <Button className="bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+            <Button className="bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
               <Download className="mr-2 h-4 w-4" /> Download Full Career Report
             </Button>
           </div>
         </TabsContent>
-        <TabsContent value="skills" className="mt-4 space-y-4">
-          <Card className="border-[#DDDDFB]">
+        <TabsContent value="skills">
+          <Card className="border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md">
             <CardHeader>
-              <CardTitle>Skills Gap Analysis</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-white">Skills Gap Analysis</CardTitle>
+              <CardDescription className="text-white/70">
                 Based on your profile and career interests, we've identified key skills for you to develop.
               </CardDescription>
             </CardHeader>
@@ -215,12 +188,12 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
                 {skillGaps.map((skill, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <h4 className="font-medium text-[#141414]">{skill.skill}</h4>
-                      <span className="text-sm text-[#141414]/60">Importance: {skill.importance}%</span>
+                      <h4 className="font-medium text-white">{skill.skill}</h4>
+                      <span className="text-sm text-white/60">Importance: {skill.importance}%</span>
                     </div>
                     <Progress value={skill.importance} className="h-2" />
-                    <div className="rounded-lg bg-[#F5F5F5] p-3">
-                      <h5 className="mb-2 text-sm font-medium text-[#141414]">Learning Resources</h5>
+                    <div className="rounded-lg bg-black/50 border border-[#DDDDFB]/20 p-3">
+                      <h5 className="mb-2 text-sm font-medium text-white">Learning Resources</h5>
                       <ul className="space-y-1">
                         {skill.resources.map((resource, resourceIndex) => (
                           <li key={resourceIndex}>
@@ -228,7 +201,7 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
                               href={resource.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center text-sm text-[#1418EB] hover:underline"
+                              className="flex items-center text-sm text-[#00EDBE] hover:text-[#00EDBE]/80"
                             >
                               {resource.name}
                               <ExternalLink className="ml-1 h-3 w-3" />
@@ -242,28 +215,28 @@ export function ProcessingResults({ formData }: ProcessingResultsProps) {
               </div>
             </CardContent>
           </Card>
-          <div className="flex justify-center">
-            <Button className="bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+          <div className="flex justify-center mt-6">
+            <Button className="bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
               <Download className="mr-2 h-4 w-4" /> Download Personalized Learning Plan
             </Button>
           </div>
         </TabsContent>
       </Tabs>
 
-      <div className="rounded-lg border border-[#DDDDFB] bg-white p-4">
-        <h3 className="mb-2 text-lg font-medium text-[#141414]">What's Next?</h3>
-        <p className="mb-4 text-[#141414]/70">Continue your career journey with these recommended next steps:</p>
+      <div className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
+        <h3 className="mb-2 text-lg font-medium text-white">What's Next?</h3>
+        <p className="mb-4 text-white/70">Continue your career journey with these recommended next steps:</p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Button variant="outline" className="border-[#DDDDFB] text-[#141414]">
+          <Button variant="outline" className="border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10">
             Explore Job Listings
           </Button>
-          <Button variant="outline" className="border-[#DDDDFB] text-[#141414]">
+          <Button variant="outline" className="border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10">
             Connect with Mentors
           </Button>
-          <Button variant="outline" className="border-[#DDDDFB] text-[#141414]">
+          <Button variant="outline" className="border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10">
             Browse Learning Resources
           </Button>
-          <Button variant="outline" className="border-[#DDDDFB] text-[#141414]">
+          <Button variant="outline" className="border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10">
             Schedule Career Counseling
           </Button>
         </div>

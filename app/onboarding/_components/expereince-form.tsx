@@ -63,9 +63,9 @@ export function ExperienceForm({ onSubmit }: ExperienceFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {experiences.map((experience, index) => (
-        <div key={index} className="rounded-lg border border-[#DDDDFB] p-4">
+        <div key={index} className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-medium text-[#141414]">Experience #{index + 1}</h3>
+            <h3 className="text-lg font-medium text-white">Experience #{index + 1}</h3>
             {experiences.length > 1 && (
               <Button
                 type="button"
@@ -80,49 +80,53 @@ export function ExperienceForm({ onSubmit }: ExperienceFormProps) {
           </div>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor={`title-${index}`}>Job Title</Label>
+              <Label htmlFor={`title-${index}`} className="text-white">Job Title</Label>
               <Input
                 id={`title-${index}`}
                 placeholder="e.g. Software Engineer"
                 value={experience.title}
                 onChange={(e) => handleChange(index, "title", e.target.value)}
                 required
+                className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor={`company-${index}`}>Company</Label>
+                <Label htmlFor={`company-${index}`} className="text-white">Company</Label>
                 <Input
                   id={`company-${index}`}
                   placeholder="e.g. Acme Inc."
                   value={experience.company}
                   onChange={(e) => handleChange(index, "company", e.target.value)}
                   required
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor={`location-${index}`}>Location</Label>
+                <Label htmlFor={`location-${index}`} className="text-white">Location</Label>
                 <Input
                   id={`location-${index}`}
                   placeholder="e.g. New York, NY"
                   value={experience.location}
                   onChange={(e) => handleChange(index, "location", e.target.value)}
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
                 />
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor={`start-date-${index}`}>Start Date</Label>
+                <Label htmlFor={`start-date-${index}`} className="text-white">Start Date</Label>
                 <Input
                   id={`start-date-${index}`}
                   type="month"
                   value={experience.startDate}
                   onChange={(e) => handleChange(index, "startDate", e.target.value)}
                   required
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor={`end-date-${index}`}>End Date</Label>
+                <Label htmlFor={`end-date-${index}`} className="text-white">End Date</Label>
                 <Input
                   id={`end-date-${index}`}
                   type="month"
@@ -130,6 +134,7 @@ export function ExperienceForm({ onSubmit }: ExperienceFormProps) {
                   onChange={(e) => handleChange(index, "endDate", e.target.value)}
                   disabled={experience.currentlyWorking}
                   required={!experience.currentlyWorking}
+                  className="bg-black/50 border-[#DDDDFB]/20 text-white disabled:opacity-50"
                 />
               </div>
             </div>
@@ -138,19 +143,20 @@ export function ExperienceForm({ onSubmit }: ExperienceFormProps) {
                 id={`current-${index}`}
                 checked={experience.currentlyWorking}
                 onCheckedChange={(checked) => handleChange(index, "currentlyWorking", !!checked)}
+                className="border-[#DDDDFB]/20 data-[state=checked]:bg-[#00EDBE] data-[state=checked]:border-[#00EDBE]"
               />
-              <Label htmlFor={`current-${index}`} className="text-sm font-normal">
+              <Label htmlFor={`current-${index}`} className="text-sm font-normal text-white">
                 I currently work here
               </Label>
             </div>
             <div className="space-y-2">
-              <Label htmlFor={`description-${index}`}>Description</Label>
+              <Label htmlFor={`description-${index}`} className="text-white">Description</Label>
               <Textarea
                 id={`description-${index}`}
                 placeholder="Describe your responsibilities and achievements..."
                 value={experience.description}
                 onChange={(e) => handleChange(index, "description", e.target.value)}
-                className="min-h-[100px]"
+                className="min-h-[100px] bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
               />
             </div>
           </div>
@@ -161,12 +167,12 @@ export function ExperienceForm({ onSubmit }: ExperienceFormProps) {
         type="button"
         variant="outline"
         onClick={handleAddExperience}
-        className="w-full border-dashed border-[#DDDDFB] text-[#141414]"
+        className="w-full border-dashed border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10"
       >
         <Plus className="mr-2 h-4 w-4" /> Add Another Experience
       </Button>
 
-      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
         Continue <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>
