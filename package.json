@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.22.0",
     "@opencampus/ocid-connect-js": "^1.2.6",
     "@prisma/extension-accelerate": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.2",
