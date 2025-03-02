@@ -46,11 +46,11 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button size="lg" className="bg-[#141BEB] hover:bg-[#141BEB]/80 text-white px-8">
+            <Button size="lg" className="rounded-xl bg-[#141BEB] hover:bg-[#141BEB]/80 text-white px-8">
               <UserCircle className="mr-2 h-5 w-5" />
               Create Profile
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-[#00EDBE] hover:bg-[#00EDBE]/20">
+            <Button size="lg" variant="outline" className="rounded-xl text-white border-[#00EDBE] hover:bg-[#00EDBE]/20">
               <Sparkles className="mr-2 h-5 w-5" />
               Explore Internships
             </Button>

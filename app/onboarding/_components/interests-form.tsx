@@ -89,8 +89,8 @@ export function InterestsForm({ onSubmit }: InterestsFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-4">
         {interestCategories.map((category, categoryIndex) => (
-          <div key={categoryIndex} className="rounded-lg border border-[#DDDDFB] p-4">
-            <h3 className="mb-4 text-lg font-medium text-[#141414]">{category.name}</h3>
+          <div key={categoryIndex} className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
+            <h3 className="mb-4 text-lg font-medium text-white">{category.name}</h3>
             <div className="grid gap-3 sm:grid-cols-2">
               {category.options.map((interest, interestIndex) => (
                 <div key={interestIndex} className="flex items-center space-x-2">
@@ -98,10 +98,11 @@ export function InterestsForm({ onSubmit }: InterestsFormProps) {
                     id={`interest-${categoryIndex}-${interestIndex}`}
                     checked={selectedInterests.includes(interest)}
                     onCheckedChange={() => handleInterestToggle(interest)}
+                    className="border-[#DDDDFB]/20 data-[state=checked]:bg-[#00EDBE] data-[state=checked]:border-[#00EDBE]"
                   />
                   <Label
                     htmlFor={`interest-${categoryIndex}-${interestIndex}`}
-                    className="cursor-pointer text-sm font-normal"
+                    className="cursor-pointer text-sm font-normal text-white"
                   >
                     {interest}
                   </Label>
@@ -111,18 +112,18 @@ export function InterestsForm({ onSubmit }: InterestsFormProps) {
           </div>
         ))}
 
-        <div className="rounded-lg border border-[#DDDDFB] p-4">
-          <h3 className="mb-4 text-lg font-medium text-[#141414]">Other Interests</h3>
+        <div className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4">
+          <h3 className="mb-4 text-lg font-medium text-white">Other Interests</h3>
           <Textarea
             placeholder="Tell us about any other interests or hobbies that aren't listed above..."
             value={otherInterests}
             onChange={(e) => setOtherInterests(e.target.value)}
-            className="min-h-[100px]"
+            className="min-h-[100px] bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
           />
         </div>
       </div>
 
-      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
         Continue <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>

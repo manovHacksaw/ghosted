@@ -35,7 +35,7 @@ export function ProfileForm({ onSubmit }: ProfileFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="firstName">First Name</Label>
+          <Label htmlFor="firstName" className="text-white">First Name</Label>
           <Input
             id="firstName"
             name="firstName"
@@ -43,10 +43,11 @@ export function ProfileForm({ onSubmit }: ProfileFormProps) {
             required
             value={formData.firstName}
             onChange={handleChange}
+            className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="lastName">Last Name</Label>
+          <Label htmlFor="lastName" className="text-white">Last Name</Label>
           <Input
             id="lastName"
             name="lastName"
@@ -54,11 +55,12 @@ export function ProfileForm({ onSubmit }: ProfileFormProps) {
             required
             value={formData.lastName}
             onChange={handleChange}
+            className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
           />
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email" className="text-white">Email</Label>
         <Input
           id="email"
           name="email"
@@ -67,10 +69,11 @@ export function ProfileForm({ onSubmit }: ProfileFormProps) {
           required
           value={formData.email}
           onChange={handleChange}
+          className="bg-black/50 border-[#DDDDFB]/20 text-white placeholder:text-white/50"
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password" className="text-white">Password</Label>
         <Input
           id="password"
           name="password"
@@ -78,10 +81,11 @@ export function ProfileForm({ onSubmit }: ProfileFormProps) {
           required
           value={formData.password}
           onChange={handleChange}
+          className="bg-black/50 border-[#DDDDFB]/20 text-white"
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="confirmPassword">Confirm Password</Label>
+        <Label htmlFor="confirmPassword" className="text-white">Confirm Password</Label>
         <Input
           id="confirmPassword"
           name="confirmPassword"
@@ -89,9 +93,10 @@ export function ProfileForm({ onSubmit }: ProfileFormProps) {
           required
           value={formData.confirmPassword}
           onChange={handleChange}
+          className="bg-black/50 border-[#DDDDFB]/20 text-white"
         />
       </div>
-      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/90">
+      <Button type="submit" className="w-full bg-[#1418EB] text-white hover:bg-[#1418EB]/80">
         Continue <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>

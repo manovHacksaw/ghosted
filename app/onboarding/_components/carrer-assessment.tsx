@@ -147,16 +147,16 @@ export function CareerAssessment({ onSubmit }: CareerAssessmentProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="mb-4 space-y-2">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-[#141414]/60">
+          <span className="text-sm text-white/60">
             Question {currentQuestion + 1} of {questions.length}
           </span>
-          <span className="text-sm font-medium text-[#141414]">{progress.toFixed(0)}% Complete</span>
+          <span className="text-sm font-medium text-white">{progress.toFixed(0)}% Complete</span>
         </div>
         <Progress value={progress} className="h-2" />
       </div>
 
-      <div className="rounded-lg border border-[#DDDDFB] p-6">
-        <h3 className="mb-6 text-xl font-medium text-[#141414]">{questions[currentQuestion].question}</h3>
+      <div className="rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-6">
+        <h3 className="mb-6 text-xl font-medium text-white">{questions[currentQuestion].question}</h3>
 
         <RadioGroup
           value={answers[questions[currentQuestion].id] || ""}
@@ -166,19 +166,19 @@ export function CareerAssessment({ onSubmit }: CareerAssessmentProps) {
           {questions[currentQuestion].options.map((option) => (
             <div
               key={option.value}
-              className={`flex cursor-pointer items-center rounded-lg border border-[#DDDDFB] p-4 transition-colors hover:bg-[#F5F5F5] ${
-                answers[questions[currentQuestion].id] === option.value ? "border-[#1418EB] bg-[#1418EB]/5" : ""
+              className={`flex cursor-pointer items-center rounded-lg border border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md p-4 transition-colors hover:bg-[#DDDDFB]/10 ${
+                answers[questions[currentQuestion].id] === option.value ? "border-[#00EDBE] bg-[#00EDBE]/10" : ""
               }`}
               onClick={() => handleAnswer(questions[currentQuestion].id, option.value)}
             >
               <RadioGroupItem
                 value={option.value}
                 id={`${questions[currentQuestion].id}-${option.value}`}
-                className="mr-3"
+                className="mr-3 border-[#DDDDFB]/20 text-[#00EDBE]"
               />
               <Label
                 htmlFor={`${questions[currentQuestion].id}-${option.value}`}
-                className="w-full cursor-pointer font-normal"
+                className="w-full cursor-pointer font-normal text-white"
               >
                 {option.label}
               </Label>
@@ -189,7 +189,7 @@ export function CareerAssessment({ onSubmit }: CareerAssessmentProps) {
 
       <div className="flex justify-between">
         {currentQuestion > 0 ? (
-          <Button type="button" variant="outline" onClick={handlePrevious} className="border-[#DDDDFB] text-[#141414]">
+          <Button type="button" variant="outline" onClick={handlePrevious} className="border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10">
             Previous
           </Button>
         ) : (
@@ -201,7 +201,7 @@ export function CareerAssessment({ onSubmit }: CareerAssessmentProps) {
             type="button"
             onClick={handleNext}
             disabled={!answers[questions[currentQuestion].id]}
-            className="bg-[#1418EB] text-white hover:bg-[#1418EB]/90"
+            className="bg-[#1418EB] text-white hover:bg-[#1418EB]/80 disabled:opacity-50"
           >
             Next
           </Button>
@@ -209,7 +209,7 @@ export function CareerAssessment({ onSubmit }: CareerAssessmentProps) {
           <Button
             type="submit"
             disabled={!answers[questions[currentQuestion].id]}
-            className="bg-[#1418EB] text-white hover:bg-[#1418EB]/90"
+            className="bg-[#1418EB] text-white hover:bg-[#1418EB]/80 disabled:opacity-50"
           >
             Submit Assessment <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

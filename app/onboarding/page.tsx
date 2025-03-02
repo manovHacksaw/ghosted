@@ -78,21 +78,21 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#F5F5F5]">
-      
+    <div className="flex min-h-screen flex-col bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+     
       <main className="container mx-auto flex-1 px-4 py-8">
         <div className="mx-auto max-w-3xl">
           <div className="mb-8">
             <div className="flex items-center justify-between">
-              <h1 className="text-2xl font-bold text-[#141414]">
+              <h1 className="text-2xl font-bold text-white">
                 {currentStep === steps.length - 1 ? "Your Career Recommendations" : "Create Your Profile"}
               </h1>
-              <div className="text-sm text-[#141414]/60">
+              <div className="text-sm text-white/60">
                 Step {currentStep + 1} of {steps.length}
               </div>
             </div>
             {currentStep < steps.length - 1 && (
-              <div className="mt-4 overflow-hidden rounded-full bg-[#DDDDFB]">
+              <div className="mt-4 overflow-hidden rounded-full bg-[#DDDDFB]/20">
                 <div
                   className="h-2 rounded-full bg-[#1418EB] transition-all duration-300"
                   style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
@@ -109,8 +109,8 @@ export default function SignupPage() {
                   index === currentStep
                     ? "bg-[#1418EB] text-white"
                     : index < currentStep
-                      ? "bg-[#DDDDFB] text-[#141414]"
-                      : "bg-[#F5F5F5] text-[#141414]/40"
+                      ? "bg-[#DDDDFB]/20 text-white"
+                      : "bg-black/50 text-white/40"
                 }`}
               >
                 {index < currentStep && <CheckCircle className="mr-1 h-3 w-3" />}
@@ -119,10 +119,10 @@ export default function SignupPage() {
             ))}
           </div>
 
-          <Card className="border-[#DDDDFB] shadow-sm">
+          <Card className="border-[#DDDDFB]/20 bg-black/50 backdrop-blur-md">
             <CardHeader>
-              <CardTitle>{steps[currentStep].title}</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-white">{steps[currentStep].title}</CardTitle>
+              <CardDescription className="text-white/70">
                 {currentStep === steps.length - 1
                   ? "Based on your profile and assessment, here are your personalized career recommendations."
                   : `Please provide your ${steps[currentStep].title.toLowerCase()} information.`}
@@ -131,12 +131,27 @@ export default function SignupPage() {
             <CardContent>
               {isProcessing ? (
                 <div className="flex flex-col items-center justify-center py-12">
-                  <div className="mb-4 h-16 w-16 animate-pulse rounded-full bg-[#00EDBE]"></div>
-                  <h3 className="mb-2 text-xl font-semibold text-[#141414]">Processing Your Data</h3>
-                  <p className="text-center text-[#141414]/70">
-                    Our AI is analyzing your profile and assessment results to generate personalized career
-                    recommendations.
+                  <div className="relative mb-4">
+                    <div className="h-16 w-16 rounded-full border-4 border-[#DDDDFB]/20 border-t-[#00EDBE] animate-spin"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-8 w-8 rounded-full bg-[#00EDBE]/20 animate-pulse"></div>
+                    </div>
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold text-white">Processing Your Data</h3>
+                  <p className="text-center text-white/70 max-w-md">
+                    Our AI is analyzing your profile and assessment results to generate personalized career recommendations...
                   </p>
+                  <div className="mt-6 flex flex-wrap gap-3 justify-center">
+                    <div className="px-4 py-2 rounded-full bg-black/50 border border-[#DDDDFB]/20 text-white/60 text-sm animate-pulse">
+                      Analyzing Skills
+                    </div>
+                    <div className="px-4 py-2 rounded-full bg-black/50 border border-[#DDDDFB]/20 text-white/60 text-sm animate-pulse delay-300">
+                      Matching Career Paths
+                    </div>
+                    <div className="px-4 py-2 rounded-full bg-black/50 border border-[#DDDDFB]/20 text-white/60 text-sm animate-pulse delay-700">
+                      Generating Insights
+                    </div>
+                  </div>
                 </div>
               ) : (
                 renderStep()
@@ -146,7 +161,11 @@ export default function SignupPage() {
 
           {currentStep > 0 && currentStep < steps.length - 1 && (
             <div className="mt-6 flex justify-between">
-              <Button variant="outline" onClick={handleBack} className="border-[#DDDDFB] text-[#141414]">
+              <Button 
+                variant="outline" 
+                onClick={handleBack} 
+                className="border-[#DDDDFB]/20 text-white hover:bg-[#DDDDFB]/10"
+              >
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back
               </Button>
             </div>
