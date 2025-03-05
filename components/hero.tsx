@@ -6,6 +6,7 @@ import { UserCircle, Sparkles } from "lucide-react"
 import { FloatingCards } from "@/components/floating-cards"
 import { GhostAnimation } from "@/components/ghost-animation"
 import { useOCAuth } from "@opencampus/ocid-connect-js"
+import Link from "next/link"
 
 export default function Hero() {
   const { authState, ocAuth} = useOCAuth();
@@ -52,7 +53,7 @@ export default function Hero() {
             </Button>
             <Button size="lg" variant="outline" className="rounded-xl text-white border-[#00EDBE] hover:bg-[#00EDBE]/20">
               <Sparkles className="mr-2 h-5 w-5" />
-              Explore Internships
+              <Link href="/jobs">Explore Internships</Link>
             </Button>
           </motion.div>
         </div>

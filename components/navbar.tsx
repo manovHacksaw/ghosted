@@ -110,7 +110,7 @@ export default function Navbar() {
             ]}
           />
           
-          <NavLink href="/internships">Internships</NavLink>
+          <NavLink href="/jobs">Internships</NavLink>
           <NavLink href="/pricing">Pricing</NavLink>
         </div>
 
