@@ -42,7 +42,7 @@ export default function Jobs() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02] relative">
+    <div className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02] relative pt-20">
       {/* Ambient background with moving particles */}
       <div className="h-full w-full absolute inset-0 z-0">
         <SparklesCore
